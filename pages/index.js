@@ -1,17 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Home(props) {
   const updatedList = props.data.slice(0, 15);
   return (
     <div>
-      <ul className="list-disc">
+      <div className="px-10 py-6 font-semibold text-xl">Favourites</div>
+      <div
+        className="flex flex-row flex-wrap gap-8 px-10 "
+        style={{ maxWidth: "100vw" }}
+      >
         {updatedList.map((item) => (
-          <li key={item.id} className="p-2">
-            {item.title}
-          </li>
+          <Card key={item.imdbID} movie={item} />
         ))}
-      </ul>
+      </div>
 
       <style jsx>{`
         @media (max-width: 600px) {
@@ -26,9 +28,22 @@ export default function Home(props) {
     </div>
   );
 }
+const Card = (props) => {
+  const { movie } = props;
+  return (
+    <div
+      className="h-80 w-80 text-white"
+      style={{ backgroundColor: "#24272c" }}
+    >
+      <Image src={movie.Poster} width="100%" height="80%" layout="responsive" />
+      <div className="px-3 pt-2">
+        {movie.Title} ({movie.Year})
+      </div>
+    </div>
+  );
+};
 export async function getServerSideProps() {
-  // console.log("initial");
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const res = await fetch("http://localhost:3800/api/favourites");
   const json = await res.json();
-  return { props: { data: json } };
+  return { props: { data: json.data } };
 }
