@@ -6,24 +6,26 @@ export default function Home(props) {
   return (
     <div>
       <div className="px-10 py-6 font-semibold text-xl">Favourites</div>
-      <div
-        className="grid gap-8 px-10 "
-        style={{
-          maxWidth: "100vw",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gridTemplateRows: "repeat(3, 250px)",
-        }}
-      >
+      <div className="grid gap-8 px-10 fav-wrapper">
         {updatedList.map((item) => (
           <Card key={item.imdbID} movie={item} />
         ))}
       </div>
 
       <style jsx>{`
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
+        .fav-wrapper {
+          max-width: 100vw;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: 250px;
+        }
+        @media (max-width: 992px) {
+          .fav-wrapper {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        @media (max-width: 768px) {
+          .fav-wrapper {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
       `}</style>
@@ -64,7 +66,7 @@ const Card = (props) => {
   );
 };
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3800/api/favourites");
+  const res = await fetch(`${process.env.BASE_URL}/favourites`);
   const json = await res.json();
   return { props: { data: json.data } };
 }

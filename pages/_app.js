@@ -15,8 +15,11 @@ function Layout(props) {
   return (
     <div id="cont">
       <Head>
-        <title>Movie Reviews</title>
-        <meta name="description" content="Bakery description" />
+        <title>Movie Reviews, Ratings and more</title>
+        <meta
+          name="description"
+          content="Get movie details, reviews, ratings and more"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
@@ -25,7 +28,7 @@ function Layout(props) {
       </Head>
       <header className="flex justify-between px-20 items-center h-16">
         <Link href={"/"}>
-          <div className={"text-2xl link"}>Moview Reviews</div>
+          <div className={"text-2xl link"}>Moview Mania</div>
         </Link>
         <div className="flex  gap-10">
           <Link href={"/gallery"}>
