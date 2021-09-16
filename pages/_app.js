@@ -2,6 +2,7 @@ import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import Link from "next/link";
 import Head from "next/head";
+import Script from "next/script";
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -12,20 +13,28 @@ export default function MyApp({ Component, pageProps }) {
 }
 function Layout(props) {
   return (
-    <div className="">
+    <div id="cont">
       <Head>
-        <title>Golden Bakery</title>
+        <title>Movie Reviews</title>
         <meta name="description" content="Bakery description" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Head>
       <header className="flex justify-between px-20 items-center h-16">
         <Link href={"/"}>
-          <div className={"text-2xl link"}>Golden Bakery</div>
+          <div className={"text-2xl link"}>Moview Reviews</div>
         </Link>
         <div className="flex  gap-10">
+          <Link href={"/gallery"}>
+            <h3 className="link">Gallery</h3>
+          </Link>
           <Link href={"/profile"}>
             <h3 className="link">Profile</h3>
           </Link>
+
           <Link
             href={{
               pathname: "/about",
@@ -36,7 +45,8 @@ function Layout(props) {
           </Link>
         </div>
       </header>
-      <main className="w-max m-auto py-20">{props.children}</main>
+      <main className="m-auto">{props.children}</main>
+      <div id="chat-support"></div>
       <style jsx>{`
         @media (max-width: 600px) {
           .grid {
