@@ -37,7 +37,7 @@ const data = [
     Title: "Batman Begins",
     Year: "2005",
     Poster:
-      "https://ia.media-imdb.com/images/M/MV5BYzc4ODgyZmYtMGFkZC00NGQyLWJiMDItMmFmNjJiZjcxYzVmXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      "https://c4.wallpaperflare.com/wallpaper/222/410/453/comics-ghost-rider-bike-chain-fire-hd-wallpaper-thumb.jpg",
   },
   {
     imdbID: "tt4116284",

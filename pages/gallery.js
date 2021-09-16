@@ -1,5 +1,4 @@
-import Head from "next/head";
-import Script from "next/script";
+import Carousel from "../Components/Carousel";
 import Image from "next/image";
 const data = [
   "https://c4.wallpaperflare.com/wallpaper/449/327/810/venom-movie-venom-hd-4k-wallpaper-preview.jpg",
@@ -11,22 +10,24 @@ const data = [
 ];
 export default function About() {
   return (
-    <div
-      className="px-10 py-20 flex justify-center flex-col items-center"
-      style={{ position: "relative" }}
-    >
-      {data.map((item, idx) => (
-        <div style={{ position: "relative" }} className="mb-6">
-          <Image
-            height={600}
-            width={1080}
-            key={idx}
-            //   placeholder="blur"
-            // layout="responsive"
-            src={item}
-          />
-        </div>
-      ))}
+    <div>
+      <Carousel slides={data} />
+      <div
+        className="px-10 py-20 flex justify-center flex-col items-center"
+        style={{ position: "relative" }}
+      >
+        {data.map((item, idx) => (
+          <div style={{ position: "relative" }} className="mb-6" key={idx}>
+            <Image
+              height={600}
+              width={1080}
+              //   placeholder="blur"
+              // layout="responsive"
+              src={item}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
