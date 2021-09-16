@@ -7,8 +7,12 @@ export default function Home(props) {
     <div>
       <div className="px-10 py-6 font-semibold text-xl">Favourites</div>
       <div
-        className="flex flex-row flex-wrap gap-8 px-10 "
-        style={{ maxWidth: "100vw" }}
+        className="grid gap-8 px-10 "
+        style={{
+          maxWidth: "100vw",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateRows: "repeat(3, 250px)",
+        }}
       >
         {updatedList.map((item) => (
           <Card key={item.imdbID} movie={item} />
@@ -31,14 +35,31 @@ export default function Home(props) {
 const Card = (props) => {
   const { movie } = props;
   return (
-    <div
-      className="h-80 w-80 text-white"
-      style={{ backgroundColor: "#24272c" }}
-    >
-      <Image src={movie.Poster} width="100%" height="80%" layout="responsive" />
+    <div className="text-white h-30" style={{ backgroundColor: "#24272c" }}>
+      <div
+        style={{ width: "100%", height: "80%", position: "relative" }}
+        className="img-cont"
+      >
+        <Image
+          src={movie.Poster}
+          layout="fill"
+          objectFit={"cover"}
+          // style={{
+          //   objectFit: "contain",
+          //   width: "100% !important",
+          //   position: "relative !important",
+          //   height: "unset",
+          // }}
+        />
+      </div>
       <div className="px-3 pt-2">
         {movie.Title} ({movie.Year})
       </div>
+      <style>
+        {`
+          
+        `}
+      </style>
     </div>
   );
 };

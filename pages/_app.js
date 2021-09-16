@@ -15,7 +15,7 @@ function Layout(props) {
   return (
     <div id="cont">
       <Head>
-        <title>Golden Bakery</title>
+        <title>Movie Reviews</title>
         <meta name="description" content="Bakery description" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -28,9 +28,13 @@ function Layout(props) {
           <div className={"text-2xl link"}>Moview Reviews</div>
         </Link>
         <div className="flex  gap-10">
+          <Link href={"/gallery"}>
+            <h3 className="link">Gallery</h3>
+          </Link>
           <Link href={"/profile"}>
             <h3 className="link">Profile</h3>
           </Link>
+
           <Link
             href={{
               pathname: "/about",
