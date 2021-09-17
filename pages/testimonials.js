@@ -24,7 +24,7 @@ const res = [
     url: "https://images.pexels.com/photos/1738997/pexels-photo-1738997.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   },
 ];
-function Testimonial() {
+export default function Testimonial() {
   const [active, setActive] = useState(0);
   const width = 400;
   return (
