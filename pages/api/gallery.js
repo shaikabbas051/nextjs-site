@@ -1,5 +1,6 @@
 import Movie from "../../model/Movies";
 import dbConnect from "../../lib/mongo";
+
 export default async (req, res) => {
   await dbConnect();
   switch (req.method) {
@@ -7,7 +8,9 @@ export default async (req, res) => {
       try {
         const movies = await Movie.find({});
         res.status(200).json({
-          data: movies,
+          data: movies
+            .slice(0, 15)
+            .map(({ poster_path, _id }) => ({ _id, poster_path })),
         });
         // res.status(200).json({ success: true, data: notes });
       } catch (error) {

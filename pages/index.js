@@ -1,14 +1,12 @@
-import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
 export default function Home(props) {
-  const updatedList = props.data.slice(0, 15);
+  const updatedList = props.data;
   return (
     <div>
       <div className="px-10 py-6 font-semibold text-xl">Favourites</div>
-      <div className="grid gap-8 px-10 fav-wrapper">
+      <div className="grid gap-8 px-10 fav-wrapper pb-6">
         {updatedList.map((item) => (
-          <Card key={item.imdbID} movie={item} />
+          <Card key={item._id} movie={item} />
         ))}
       </div>
 
@@ -43,7 +41,7 @@ const Card = (props) => {
         className="img-cont"
       >
         <Image
-          src={movie.Poster}
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           layout="fill"
           objectFit={"cover"}
           // style={{
@@ -55,7 +53,7 @@ const Card = (props) => {
         />
       </div>
       <div className="px-3 pt-2">
-        {movie.Title} ({movie.Year})
+        {movie.title} ({movie.release_date})
       </div>
       <style>
         {`
@@ -66,7 +64,7 @@ const Card = (props) => {
   );
 };
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.BASE_URL}/favourites`);
+  const res = await fetch(`${process.env.DEV_URL}/api/favourites`);
   const json = await res.json();
   return { props: { data: json.data } };
 }
